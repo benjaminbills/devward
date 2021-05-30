@@ -4,7 +4,7 @@ from .decorators import unauthenticated_user
 from django.contrib import messages
 from .forms import  CreateUserForm, ProfileForm, NewProjectForm
 from django.contrib.auth.decorators import login_required
-from .models import Profile
+from .models import Profile, Project
 
 
 # Create your views here.
@@ -83,3 +83,12 @@ def addProject(request):
         form = NewProjectForm()
     context = {'form':form}
     return render(request, 'project/add_project.html', context)
+
+@login_required(login_url='login')
+def viewProjects(request):
+    projects = Project.objects.all()
+    
+    # posts = profile.user.image_set.all()
+    # total_post = posts.count()
+    context = {'projects':projects }
+    return render(request, 'project/projects.html', context)
