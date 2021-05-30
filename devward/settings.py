@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'awards'
+    'cloudinary_storage',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -145,3 +147,12 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Cloudinary setup
+MEDIA_URL = '/Devward/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME':config('CLOUD_NAME'),
+    'API_KEY':config('CLOUDINARY_APIKEY'),
+    'API_SECRET':config('CLOUDINARY_APISECRET')
+}
