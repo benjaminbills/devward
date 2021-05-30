@@ -1,0 +1,58 @@
+{%extends 'base.html'%}
+
+{% block content %}
+<header>
+  <div class="container">
+    <div class="profile">
+      <div class="profile-image">
+        <img src="{{profile.profile_photo.url}}" style="height: 120px; width: 120px;" alt="">
+      </div>
+      <div class="profile-user-settings">
+        <h1 class="profile-user-name">{{profile.user.username}}</h1>
+        {% if request.user == profile.user  %}
+        <button class="btn profile-edit-btn"> <a href="{% url 'account' %}">Edit Profile</a></button>
+        {% endif %}
+        
+      </div>
+      <div class="profile-stats">
+        <ul>
+          <li><span class="profile-stat-count">{{total_post}}</span> posts</li>
+          <li><span class="profile-stat-count">188</span> followers</li>
+          <li><span class="profile-stat-count">206</span> following</li>
+        </ul>
+      </div>
+      <div class="profile-bio">
+        <p> {{profile.bio}}</p>
+      </div>
+      
+    </div>
+    <!-- End of profile section -->
+  </div>
+  <!-- End of container -->
+</header>
+<main>
+  <div class="container">
+    <div class="gallery">
+      {% for post in images %}
+      <div class="gallery-item" tabindex="0">
+        <a href="/post/{{post.id}}">
+          <img src="{{post.image.url}}" class="gallery-image" alt="">
+        </a>
+        <div class="gallery-item-info">
+          <ul>
+            <a href="/post/{{post.id}}">
+            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i>{{post.likes.count}}</li>
+            </a>
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    
+    
+  </div>
+  
+</main>
+
+
+{% endblock %}
