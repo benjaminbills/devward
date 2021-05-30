@@ -1,0 +1,71 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 2px solid #ddd;
+}
+.navbar .logo-section {
+  display: flex;
+  align-items: center;
+}
+.navbar .logo-section div {
+  align-self: stretch;
+  width: 1px;
+  background: black;
+  margin: 0 20px;
+}
+.navbar .icons-section .far,.fas {
+  text-decoration: none;
+  color: inherit;
+  font-size: 2rem;
+  margin: 0 10px;
+}
+.navbar .logo {
+  width: 40px;
+}
+.navbar .logoname {
+  width: 100px;
+}
+.navbar .input-search {
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solix #ddd;
+  outline: 0;
+}
+.navbar .input-search:focus {
+  text-align: left;
+}
+
+@media screen and (max-width:2000px) and (min-width: 986px) {
+  .navbar .logoname {
+    width: 100px;
+  }
+}
+@media screen and (max-width:985px) and (min-width: 501px){
+  .navbar .logoname {
+    width: 60px;
+  }
+  .logo {
+    height: 25px;
+    width: 25px;
+  }
+}
+
+@media screen and (max-width:500px){
+  .navbar .logoname {
+    width: 70px;
+  }
+  .logo {
+    height: 30px;
+    width: 30px;
+  }
+  .icons-section {
+    display: flex;
+    flex-direction: column;
+  }
+  .far, .fas {
+    margin-top: 5px;
+  }
+}

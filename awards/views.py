@@ -58,3 +58,12 @@ def accountSettings(request):
 
 	context = {'form':form}
 	return render(request, 'profile/profile_edit.html', context)
+
+@login_required(login_url='login')
+def userPage(request, user_id):
+    profile = Profile.objects.get(user=user_id)
+    
+    # posts = profile.user.image_set.all()
+    # total_post = posts.count()
+    context = {'profile':profile }
+    return render(request, 'profile/profile.html', context)
