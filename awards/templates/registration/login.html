@@ -1,0 +1,40 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://kit.fontawesome.com/fc1e235b2e.js"></script>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  <title>Dev Ward Login</title>
+</head>
+
+<body>
+
+  <div id="wrapper">
+    <div class="container">
+      <div class="phone-app-demo"></div>
+      <div class="form-data">
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="logo">
+            <img src="{% static 'img/logo.png' %}" alt="logo">
+          </div>
+          <input type="text" name="username" placeholder="Username">
+          <input type="password" name="password" placeholder="Password">
+          <button class="form-btn" type="submit" value='Login'>Log in</button>
+        </form>
+        <div class="sign-up">
+          Don't have an account? <a>Sign up</a>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</body>
+
+</html>
