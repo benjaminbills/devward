@@ -6,6 +6,7 @@ from .forms import  CreateUserForm, ProfileForm, NewProjectForm, NewRatingForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Project, Rating
 from django.db.models import F
+from .filters import ProjectFilter
 
 
 # Create your views here.
@@ -14,6 +15,13 @@ def home(request):
     projects = Project.posted_today()
     context = {'projects':projects, 'ratings':ratings }
     return render(request, 'home.html', context)
+
+def search(request):
+    projects = Project.objects.all()
+    myFilter = ProjectFilter(request.GET, queryset=projects)
+    projects = myFilter.qs
+    context = {'projects':projects, 'myFilter':myFilter}
+    return render(request, 'project/search.html', context)
 
 @unauthenticated_user
 def loginPage(request):
