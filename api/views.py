@@ -5,7 +5,7 @@ from rest_framework import serializers
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from awards.models import Profile, Project
-from .serializers import ProjectSerializer
+from .serializers import ProjectSerializer, ProfileSerializer
 # Create your views here.
 
 @api_view(['GET'])
@@ -21,4 +21,10 @@ def apiOverview(request):
 def projectList(request):
   projects = Project.objects.all().order_by('-id')
   serializer = ProjectSerializer(projects, many=True)
+  return Response(serializer.data)
+
+@api_view(['GET'])
+def profileList(request):
+  profiles = Profile.objects.all().order_by('-id')
+  serializer = ProfileSerializer(profiles, many=True)
   return Response(serializer.data)
