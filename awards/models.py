@@ -18,7 +18,7 @@ class Project(models.Model):
 
 class Rating(models.Model):
   design=models.FloatField(validators=[MaxValueValidator(10), MinValueValidator(1)])
-  usability=models.FloatField()
-  content=models.FloatField()
+  usability=models.FloatField(validators=[MaxValueValidator(10), MinValueValidator(1)])
+  content=models.FloatField(validators=[MaxValueValidator(10), MinValueValidator(1)])
   project=models.ForeignKey(Project, null=True, on_delete=models.CASCADE)
   user=models.ForeignKey(User, on_delete=models.CASCADE)

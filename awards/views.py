@@ -5,7 +5,7 @@ from django.contrib import messages
 from .forms import  CreateUserForm, ProfileForm, NewProjectForm, NewRatingForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Project, Rating
-from django.db.models import F, Sum
+from django.db.models import F
 
 
 # Create your views here.
