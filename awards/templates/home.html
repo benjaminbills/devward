@@ -1,6 +1,87 @@
 {%extends 'base.html'%}
+{% load static%}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock  %}
 
 {% block content %}
 
-<h1>Welcome</h1>
+<div class="" style="background-image: url('https://images.unsplash.com/photo-1622254835298-bc94b943bbd4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80'); height: 500px; background-repeat: no-repeat; background-size: cover;">
+<h5 class="pt-5 ">Top Rated Site</h5>
+<div class="container text-center">
+  <h2 class="pt-4">{{ratings.project.title}}</h2>
+  <ul class="display-container">
+    <li class="note-display" data-note="{{ratings.design}}">
+        <div class="circle">
+          <svg width="84" height="84" class="circle__svg">
+            <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+            <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+          </svg>
+    
+          <div class="percent">
+            <span class="percent__int">{{ratings.design}}</span>
+            <span class="percent__dec"></span>
+          </div>
+        </div>
+    
+        <span class="label">Design</span>
+      </li>
+    
+    <li class="note-display" data-note="{{ratings.content}}">
+        <div class="circle">
+          <svg width="84" height="84" class="circle__svg">
+            <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+            <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+          </svg>
+    
+          <div class="percent">
+            <span class="percent__int">{{ratings.content}}</span>
+            <span class="percent__dec">00</span>
+          </div>
+        </div>
+    
+        <span class="label">Content</span>
+      </li>
+    
+    <li class="note-display" data-note="{{ratings.usability}}">
+        <div class="circle">
+          <svg width="84" height="84" class="circle__svg">
+            <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+            <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+          </svg>
+    
+          <div class="percent">
+            <span class="percent__int">{{ratings.usability}}</span>
+            <span class="percent__dec">00</span>
+          </div>
+        </div>
+    
+        <span class="label">Usable</span>
+      </li>
+    </ul>
+</div>
+</div>
+<div class="container pt-4 pb-4">
+  <h2>Sites of the day</h2>
+  <div class="row">
+    <div class="col-6">
+      <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <div class="row">
+            <div class="col-6"><p class="card-text">Posted By- Benjamin</p></div>
+            <div class="col-6"><p class="card-text">May 30, 2021</p></div>
+          </div>
+          <a href="#" class="btn btn-primary">View more</a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
 {% endblock %}
+
+{% block script %}
+<script src="{% static 'js/home.js'%}"></script>
+{% endblock  %}
