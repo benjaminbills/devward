@@ -8,7 +8,7 @@
 {% block content %}
 <div class="container pt-4">
   <div class="row gx-5">
-    <div class="col-6">
+    <div class="col-8">
       <div class="card">
         <img src="{{project.image.url}}" class="card-img-top" alt="...">
         <div class="card-body">
@@ -27,6 +27,47 @@
       </div>
     </div>
   </div>
+  {% if not logic %}
+  <div class="row gx-5 pt-3">
+    <div class="col-8">
+      <div class="card">
+        <div class="card-body">
+          <h5>Give Rating</h5>
+          <form action="" method="POST">
+            {% csrf_token %}
+            {{form}}
+            <button>Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <div class="row gx-5 pt-3">
+    <div class="col-12">
+      <h5>Ratings</h5>
+      <p>content average rating = {{content_rating|floatformat}}</p>
+      <p>design average rating = {{design_rating|floatformat}}</p>
+      <p>usability average rating = {{usability_rating|floatformat}}</p>
+      <table class="table">
+        <tbody>
+          {% for rating in ratings %}
+          <tr>
+            <th scope="row">
+              <img class="rounded-circle" style="width: 2em; height: 2em" src="{{rating.user.profile.photo.url}}" alt="">
+            </th>
+            <td>{{rating.user.username}}</td>
+            <td>{{rating.design}}</td>
+            <td>{{rating.usability}}</td>
+            <td>{{rating.content}}</td>
+            <td>{{rating.avg_rating|floatformat}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
 
 

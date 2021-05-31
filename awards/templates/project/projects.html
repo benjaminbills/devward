@@ -14,7 +14,7 @@
         <img src="{{project.image.url}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">
-            <a href="">
+            <a href="{% url 'get_project' project.id %}">
               {{project.title}}
             </a>
           </h5>

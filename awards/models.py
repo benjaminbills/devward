@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.deletion import CASCADE
+from django.core.validators import MaxValueValidator, MinValueValidator
+
 
 # Create your models here.
 class Profile(models.Model):
@@ -16,7 +17,7 @@ class Project(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
 class Rating(models.Model):
-  design=models.FloatField()
+  design=models.FloatField(validators=[MaxValueValidator(10), MinValueValidator(1)])
   usability=models.FloatField()
   content=models.FloatField()
   project=models.ForeignKey(Project, null=True, on_delete=models.CASCADE)
