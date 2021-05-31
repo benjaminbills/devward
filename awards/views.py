@@ -11,7 +11,7 @@ from django.db.models import F
 # Create your views here.
 def home(request):
     ratings = Rating.objects.all().annotate(avg_rating=(F('design')+ F('usability') +F('content'))/3).order_by('-avg_rating')[0]
-    projects = Project.objects.all()
+    projects = Project.posted_today()
     context = {'projects':projects, 'ratings':ratings }
     return render(request, 'home.html', context)
 

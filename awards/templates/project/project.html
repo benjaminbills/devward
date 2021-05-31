@@ -3,25 +3,80 @@
 
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock  %}
 {% block content %}
 <div class="container pt-4">
   <div class="row gx-5">
-    <div class="col-8">
+    <div class="col-12">
       <div class="card">
         <img src="{{project.image.url}}" class="card-img-top" alt="...">
+        <ul class="display-container pt-3">
+    <li class="note-display" data-note="{{design_rating}}">
+        <div class="circle">
+          <svg width="84" height="84" class="circle__svg">
+            <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+            <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+          </svg>
+    
+          <div class="percent">
+            <span class="percent__int">{{design_rating|floatformat}}</span>
+          </div>
+        </div>
+    
+        <span class="label">Design</span>
+      </li>
+    
+    <li class="note-display" data-note="{{content_rating}}">
+        <div class="circle">
+          <svg width="84" height="84" class="circle__svg">
+            <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+            <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+          </svg>
+    
+          <div class="percent">
+            <span class="percent__int">{{content_rating|floatformat}}</span>
+            
+          </div>
+        </div>
+    
+        <span class="label">Content</span>
+      </li>
+    
+    <li class="note-display" data-note="{{design_rating}}">
+        <div class="circle">
+          <svg width="84" height="84" class="circle__svg">
+            <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+            <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+          </svg>
+    
+          <div class="percent">
+            <span class="percent__int">{{usability_rating|floatformat}}</span>
+          </div>
+        </div>
+    
+        <span class="label">Usability</span>
+      </li>
+    </ul>
         <div class="card-body">
           <h5 class="card-title">
             <a href="">
               {{project.title}}
             </a>
           </h5>
-          <p>
-            <img class="rounded-circle" style="width: 1.5em; height: 1.5em" src="{{project.user.profile.photo.url}}" alt="">
-            <a href="">
-              <span>By:{{project.user.username}}</span>
-            </a>
-          </p>
+          <div class="row">
+            <div class="col-6">
+              <p>
+                <img class="rounded-circle" style="width: 1.5em; height: 1.5em" src="{{project.user.profile.photo.url}}" alt="">
+                <a href="">
+                  <span>By:{{project.user.username}}</span>
+                </a>
+              </p>
+            </div>
+            <div class="col-6">
+              <button class="justify-content-end"><a href="{{project.link}}" target="_blank">Visit page</a></button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -45,10 +100,7 @@
   
   <div class="row gx-5 pt-3">
     <div class="col-12">
-      <h5>Ratings</h5>
-      <p>content average rating = {{content_rating|floatformat}}</p>
-      <p>design average rating = {{design_rating|floatformat}}</p>
-      <p>usability average rating = {{usability_rating|floatformat}}</p>
+      <h1>Ratings</h1>
       <table class="table">
         <tbody>
           {% for rating in ratings %}
@@ -72,3 +124,6 @@
 
 
 {% endblock %}
+{% block script %}
+<script src="{% static 'js/home.js'%}"></script>
+{% endblock  %}

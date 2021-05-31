@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime as dt
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
@@ -15,6 +16,13 @@ class Project(models.Model):
   link=models.URLField()
   description=models.TextField(max_length=1000)
   user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+  pub_date = models.DateTimeField(auto_now_add=True)
+
+  @classmethod
+  def posted_today(cls):
+        today = dt.date.today()
+        projects = cls.objects.filter(pub_date__date = today)
+        return projects
 
 class Rating(models.Model):
   design=models.FloatField(validators=[MaxValueValidator(10), MinValueValidator(1)])
