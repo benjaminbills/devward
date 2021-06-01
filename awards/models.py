@@ -9,7 +9,18 @@ class Profile(models.Model):
   photo=models.ImageField(upload_to='profile_photos/', default='profile_photos/default_rr8opn', blank=True)
   bio=models.TextField(max_length=1000, default='No Bio')
   user=models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-
+  def save_profile(self):
+        self.save()
+  def delete_profile(self):
+        self.delete()
+  @classmethod
+  def update_profile(cls, profile_id, bio, photo):
+        profile = cls.objects.filter(pk=profile_id).update(bio=bio,photo=photo)
+        return profile
+  @classmethod
+  def get_profile(cls,username):
+        profile = cls.objects.filter(user__username__icontains=username)
+        return profile
 class Project(models.Model):
   title=models.CharField(max_length=300)
   image=models.ImageField(upload_to='project_photos/', blank=True)
