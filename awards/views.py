@@ -71,7 +71,6 @@ def accountSettings(request):
 	context = {'form':form}
 	return render(request, 'profile/profile_edit.html', context)
 
-@login_required(login_url='login')
 def userPage(request, user_id):
     profile = Profile.objects.get(user=user_id)
     
@@ -96,7 +95,6 @@ def addProject(request):
     context = {'form':form}
     return render(request, 'project/add_project.html', context)
 
-@login_required(login_url='login')
 def getProjects(request):
     projects = Project.objects.all()
     
