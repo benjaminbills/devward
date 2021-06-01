@@ -34,6 +34,17 @@ class Project(models.Model):
         today = dt.date.today()
         projects = cls.objects.filter(pub_date__date = today)
         return projects
+  
+  def save_project(self):
+    self.save()
+  
+  def delete_project(self):
+        self.delete()
+
+  @classmethod
+  def update_project(cls, id, title, image, link, description):
+        project = cls.objects.filter(pk=id).update(title=title,image=image, link=link, description=description)
+        return project
 
 class Rating(models.Model):
   design=models.FloatField(validators=[MaxValueValidator(10), MinValueValidator(1)])
