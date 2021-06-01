@@ -14,11 +14,11 @@
     </div>
   </form>
 </div>
-<div class="container pt-4">
+<div class="container">
   <div class="row gx-5">
     {% if projects %}
     {% for project in projects %}
-    <div class="col-6">
+    <div class="col-6 pt-4">
       <div class="card">
         <img class='project-img' src="{{project.image.url}}" class="card-img-top" alt="...">
         <div class="card-body">
@@ -29,7 +29,7 @@
           </h5>
           <p>
             <img class="rounded-circle" style="width: 1.5em; height: 1.5em" src="{{project.user.profile.photo.url}}" alt="">
-            <a href="">
+            <a href="{% url 'user_page' project.user.id%}">
               <span>By:{{project.user.username}}</span>
             </a>
           </p>

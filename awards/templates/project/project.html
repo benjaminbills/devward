@@ -68,14 +68,15 @@
             <div class="col-6">
               <p>
                 <img class="rounded-circle" style="width: 1.5em; height: 1.5em" src="{{project.user.profile.photo.url}}" alt="">
-                <a href="">
+                <a href="{% url 'user_page' project.user.id%">
                   <span>By:{{project.user.username}}</span>
                 </a>
               </p>
             </div>
             <div class="col-6">
-              <button class="btn"><a href="{{project.link}}" target="_blank">Visit page</a></button>
+              <button class="btn btn-secondary"><a href="{{project.link}}" target="_blank">Visit page</a></button>
             </div>
+            <p>{{project.description}}</p>
           </div>
         </div>
       </div>

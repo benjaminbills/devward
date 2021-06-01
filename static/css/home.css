@@ -29,9 +29,12 @@ body {
 .note-display:nth-child(2) .circle__progress { stroke: #FF00AA; }
 .note-display:nth-child(3) .circle__progress { stroke: #AA00FF; }
 
-.circle {
+.circle, .main-head {
   position: relative;
+  color: white;
+  mix-blend-mode: difference;
 }
+
 
 .percent {
   width: 100%;
@@ -49,9 +52,11 @@ body {
 
 .label {
   font-family: 'Raleway', serif;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   margin-top: 15px;
+  color: white;
+  mix-blend-mode: difference;
 }
 
 .circle__progress--fill {
@@ -69,7 +74,10 @@ body {
 .card {
   font-size: 16px;
 }
-
+a { 
+  color: inherit; 
+  text-decoration: none;
+} 
 @media screen and (max-width:2000px) and (min-width: 986px) {
   .project-img {
     height: 300px;
