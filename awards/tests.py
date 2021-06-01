@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
-from .models import Profile, Project
+from .models import Profile, Project, Rating
 # Create your tests here.
 class ProfileTestClass(TestCase):
   def setUp(self):
@@ -64,3 +64,40 @@ class ProjectTestClass(TestCase):
       self.assertEqual(update_title.title,'good') 
       self.assertEqual(update_image.image,'http:image2') 
       self.assertEqual(update_description.description,'i am feeling good') 
+
+
+class RatingTestClass(TestCase):
+  def setUp(self):
+      self.user = User(username='Benjamin', email='ben@gmail.com', password='Bananna')
+      self.user.save()
+      self.project = Project(image='http:cloudinary/PixelGram/profile/ben.jpg', title='peace', user=self.user, link='https://github.com/benjaminbills/devward', description='wake up')
+      self.project.save()
+      self.rating = Rating(design = 6, content=7, usability=8, user = self.user, project = self.project)
+      # Testing  instance
+  def test_instance(self):
+      self.assertTrue(isinstance(self.rating,Rating))
+
+  def test_save_method(self):
+      self.rating.save_rating()     
+      rating = Rating.objects.all()
+      self.assertTrue(len(rating) > 0) 
+
+  def tearDown(self):
+      Rating.objects.all().delete()
+  def delete_rating(self):
+      self.rating.save_rating()
+      rating=Rating.objects.all()
+      self.assertEqual(len(rating), 1) 
+      self.rating.delete_rating()
+      del_rating=Rating.objects.all()
+      self.assertEqual(len(del_rating),0)
+  
+  def test_update_rating(self):
+      self.rating.save_rating()
+      self.rating.update_rating(self.rating.id, design=4, content=2, usability=9)
+      update_design=Rating.objects.get(design=4)
+      update_content=Rating.objects.get(content=2)
+      update_usability=Rating.objects.get(usability=9)
+      self.assertEqual(update_design.design,4)
+      self.assertEqual(update_content.content,2) 
+      self.assertEqual(update_usability.usability,9) 

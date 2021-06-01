@@ -52,3 +52,13 @@ class Rating(models.Model):
   content=models.FloatField(validators=[MaxValueValidator(10), MinValueValidator(1)])
   project=models.ForeignKey(Project, null=True, on_delete=models.CASCADE)
   user=models.ForeignKey(User, on_delete=models.CASCADE)
+  def save_rating(self):
+          self.save()
+
+  def delete_rating(self):
+          self.delete()
+
+  @classmethod
+  def update_rating(cls, id, design, usability, content):
+          rating = cls.objects.filter(pk=id).update(design=design, usability=usability, content=content)
+          return rating
