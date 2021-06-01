@@ -11,7 +11,7 @@
     {% for project in projects %}
     <div class="col-6">
       <div class="card">
-        <img src="{{project.image.url}}" class="card-img-top" alt="...">
+        <img class='project-img' src="{{project.image.url}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">
             <a href="{% url 'get_project' project.id %}">

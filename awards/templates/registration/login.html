@@ -112,7 +112,9 @@
 				   	<div class="d-flex justify-content-center mt-3 login_container">
 				 			<button class="btn login_btn" type="submit" value="Login">Login</button>
 				   	</div>
-
+						{% for message in messages %}
+							<p id="messages">{{message}}</p>
+						{% endfor %}
 					</form>
 				</div>
 				<div class="mt-4">

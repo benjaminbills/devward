@@ -132,6 +132,8 @@ def getProject(request, project_id):
             rating.user = current_user
             rating.project = project
             rating.save()
+        else:
+            messages.info(request, 'Please enter a value between 1 - 10')
         return redirect('get_project', project_id)
 
     else:

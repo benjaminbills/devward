@@ -1,8 +1,9 @@
 
-@import url('https://fonts.googleapis.com/css?family=Nixie+One|Raleway:200');
+@import url('https://fonts.googleapis.com/css?family=Nixie+One|Raleway:400');
 
 body {
   font-family: 'Nixie One', cursive;
+  font-size: 22px;
 }
 
 .display-container {
@@ -64,4 +65,24 @@ body {
 
 .circle__svg {
   transform: rotate(-90deg);
+}
+.card {
+  font-size: 16px;
+}
+
+@media screen and (max-width:2000px) and (min-width: 986px) {
+  .project-img {
+    height: 300px;
+  }
+}
+@media screen and (max-width:985px) and (min-width: 501px){
+  .project-img {
+    height: 150px;
+  }
+}
+
+@media screen and (max-width:500px){
+  .project-img {
+    height: 100px;
+  }
 }
