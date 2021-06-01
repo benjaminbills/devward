@@ -10,7 +10,7 @@
   <form method="get">
     <div class="input-group mb-3">
       {{myFilter.form}}
-      <button class="btn btn-outline-secondary" type="submit" >Submit</button>
+      <button class="btn btn-outline-secondary" type="submit" >Search</button>
     </div>
   </form>
 </div>
@@ -41,3 +41,12 @@
 
 
 {% endblock %}
+
+{% block script %}
+<script>
+  var form_fields = document.getElementsByTagName('input')
+  for (var field in form_fields){	
+			form_fields[field].className += ' form-control'
+		}
+</script>
+{% endblock  %}

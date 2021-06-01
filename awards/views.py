@@ -12,7 +12,7 @@ from .filters import ProjectFilter
 # Create your views here.
 def home(request):
     ratings = Rating.objects.all().annotate(avg_rating=(F('design')+ F('usability') +F('content'))/3).order_by('-avg_rating')[0]
-    projects = Project.posted_today()
+    projects = Project.objects.all()
     context = {'projects':projects, 'ratings':ratings }
     return render(request, 'home.html', context)
 
@@ -76,8 +76,8 @@ def userPage(request, user_id):
     profile = Profile.objects.get(user=user_id)
     
     # posts = profile.user.image_set.all()
-    # total_post = posts.count()
-    context = {'profile':profile }
+    projects = profile.user.project_set.all()
+    context = {'profile':profile, 'projects':projects }
     return render(request, 'profile/profile.html', context)
 
 @login_required(login_url='login')
