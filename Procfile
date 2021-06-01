@@ -1,1 +1,1 @@
-web: gunicorn pixelgram.wsgi
+web: gunicorn devward.wsgi
