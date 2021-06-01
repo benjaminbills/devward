@@ -49,8 +49,13 @@
 {% block script %}
 <script>
   var form_fields = document.getElementsByTagName('input')
+  var form_select = document.getElementsByTagName('select')
+
   for (var field in form_fields){	
 			form_fields[field].className += ' form-control'
 		}
+  for (var field in form_select){	
+			form_select[field].className += ' form-select'
+	}
 </script>
 {% endblock  %}
